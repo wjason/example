@@ -1,0 +1,2 @@
+class AiProductSort < ApplicationRecord
+end

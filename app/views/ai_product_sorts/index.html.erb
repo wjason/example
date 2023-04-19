@@ -1,0 +1,14 @@
+<p style="color: green"><%= notice %></p>
+
+<h1>Ai product sorts</h1>
+
+<div id="ai_product_sorts">
+  <% @ai_product_sorts.each do |ai_product_sort| %>
+    <%= render ai_product_sort %>
+    <p>
+      <%= link_to "Show this ai product sort", ai_product_sort %>
+    </p>
+  <% end %>
+</div>
+
+<%= link_to "New ai product sort", new_ai_product_sort_path %>

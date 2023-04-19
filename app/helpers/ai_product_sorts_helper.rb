@@ -1,0 +1,2 @@
+module AiProductSortsHelper
+end

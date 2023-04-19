@@ -1,0 +1,10 @@
+<p style="color: green"><%= notice %></p>
+
+<%= render @ai_product_sort %>
+
+<div>
+  <%= link_to "Edit this ai product sort", edit_ai_product_sort_path(@ai_product_sort) %> |
+  <%= link_to "Back to ai product sorts", ai_product_sorts_path %>
+
+  <%= button_to "Destroy this ai product sort", @ai_product_sort, method: :delete %>
+</div>
