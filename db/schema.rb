@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_04_20_153127) do
+ActiveRecord::Schema[7.0].define(version: 2023_04_20_161621) do
   create_table "admins", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -30,6 +30,22 @@ ActiveRecord::Schema[7.0].define(version: 2023_04_20_153127) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["uuid"], name: "index_ai_product_sorts_on_uuid", unique: true
+  end
+
+  create_table "ai_products", force: :cascade do |t|
+    t.string "uuid"
+    t.string "name"
+    t.string "des"
+    t.text "intro"
+    t.text "cover"
+    t.string "uri"
+    t.string "company"
+    t.string "country"
+    t.integer "weight", default: 0
+    t.integer "ai_product_sort_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["uuid"], name: "index_ai_products_on_uuid", unique: true
   end
 
 end

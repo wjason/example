@@ -1,0 +1,10 @@
+<p style="color: green"><%= notice %></p>
+
+<%= render @ai_product %>
+
+<div>
+  <%= link_to "Edit this ai product", edit_ai_product_path(@ai_product) %> |
+  <%= link_to "Back to ai products", ai_products_path %>
+
+  <%= button_to "Destroy this ai product", @ai_product, method: :delete %>
+</div>
