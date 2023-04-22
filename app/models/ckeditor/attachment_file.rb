@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class Ckeditor::AttachmentFile < Ckeditor::Asset
-  has_attached_file :data,
+  has_one_attached :data,
                     url: '/ckeditor_assets/attachments/:id/:filename',
                     path: ':rails_root/public/ckeditor_assets/attachments/:id/:filename'
 
