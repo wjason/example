@@ -2,5 +2,6 @@
 //= require jquery
 //= require jquery_ujs
 import "@hotwired/turbo-rails"
-Turbo.session.drive = false
 import "controllers"
+import "controllers/bootstrap.bundle.min"
+import "controllers/functions"

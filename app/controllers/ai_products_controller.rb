@@ -4,10 +4,12 @@ class AiProductsController < ApplicationController
   # GET /ai_products or /ai_products.json
   def index
     @ai_products = AiProduct.all
+    @ai_product_sorts = AiProductSort.all.order("weight DESC")
   end
 
   # GET /ai_products/1 or /ai_products/1.json
   def show
+    @likeness = @ai_product.ai_product_sort.ai_products.limit(12)
   end
 
   # GET /ai_products/new

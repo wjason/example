@@ -1,14 +1,94 @@
 <p style="color: green"><%= notice %></p>
 
-<h1>Ai products</h1>
 
-<div id="ai_products">
-  <% @ai_products.each do |ai_product| %>
-    <%= render ai_product %>
-    <p>
-      <%= link_to "Show this ai product", ai_product %>
-    </p>
-  <% end %>
-</div>
 
-<%= link_to "New ai product", new_ai_product_path %>
+<main>
+
+  <section class="pt-5 pb-0 position-relative" style="background-image: url(<%= asset_path("bg/07.jpg") %>); background-repeat: no-repeat; background-size: cover; background-position: top center;">
+    <div class="bg-overlay bg-dark opacity-8"></div>
+    <!-- Container START -->
+    <div class="container">
+      <div class="pt-5">
+        <div class="row position-relative">
+          <div class="col-xl-8 col-lg-10 mx-auto pt-sm-5 text-center">
+            <!-- Title -->
+            <h1 class="text-white">Find AI for you</h1>
+            <p class="text-white">让人工智能成为你的好帮手.</p>
+            <div class="mx-auto  rounded p-4 mt-5">
+              <h5 class="mb-3 text-start"> </h5>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section START -->
+  <section class=" py-5">
+    <div class="container card card-body col-md-10 ">
+      <% @ai_product_sorts.each do |sort|%>
+        <div class="container pt-5">
+
+          <div class="row">
+            <div class="col-12 mb-3">
+              <div class="d-sm-flex justify-content-between">
+                <!-- Sort Name -->
+                <h4><%= sort.name %> </h4>
+                <!--          <a class="btn btn-link" href="">更新订阅</a>-->
+              </div>
+            </div>
+          </div>
+          <div class="row g-4">
+            <% sort.ai_products.each do |p| %>
+              <div class="col-sm-6 col-lg-3">
+                <!-- Production item START -->
+                <div class="card h-100">
+                  <div class="position-relative">
+                    <a href="<%= ai_product_url(p) %>">
+                      <img class="img-fluid rounded-top" src="<%= "https://xcoze-1304952191.cos.ap-guangzhou.myqcloud.com/#{p.cover}?imageMogr2/thumbnail/!680x400r/crop/680x480/gravity/center/format/webp/interlace/1/quality/100"%>" alt="">
+                    </a>
+
+                  </div>
+                  <!-- Intro body START -->
+                  <div class="card-body position-relative pt-0">
+                    <a href="<%= ai_product_url(p) %>" class="a_not_style">
+                      <h5 class="mt-3">  <%= p.name %>  </h5>
+                      <!-- Company info -->
+                      <p class="mb-0 small"> <i class="bi bi-arrow-return-right pe-1"></i> <%= p.company %> </p>
+                      <p class="small"> <i class="bi bi-geo-alt pe-1"></i> <%= p.country %> </p>
+                    </a>
+                    <div class="d-flex mt-3 justify-content-between">
+                      <!-- Detail button -->
+                      <div class="w-100">
+                        <a href="<%= ai_product_url(p) %>">
+                          <label class="btn btn-sm btn-outline-success d-block" >
+                            <i class="fa-solid fa-thumbs-up me-1"></i> 查看详情
+                          </label>
+                        </a>
+                      </div>
+                      <div class="dropdown ms-3">
+                        <a href="#" class="btn btn-sm btn-primary-soft" id="eventActionShare" data-bs-toggle="dropdown" >
+                          <i class="bi bi-info-lg"></i>
+                        </a>
+                        <!-- Dropdown menu -->
+                        <ul class="dropdown-menu dropdown-menu-end">
+                          <li style="padding: 16px"> <%= p.des  %> </li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                  <!-- Intro body END -->
+                </div>
+                <!-- Production item END -->
+              </div>
+            <%end %>
+          </div>
+        </div>
+      <%end %>
+    </div>
+  </section>
+  <!-- Section END -->
+
+
+
+</main>

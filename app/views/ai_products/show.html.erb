@@ -1,10 +1,94 @@
-<p style="color: green"><%= notice %></p>
+<main>
 
-<%= render @ai_product %>
+  <main>
+    <!-- Container START -->
+    <div class="container">
+      <div class="row g-4">
+        <!-- Main content START -->
+        <div class="col-lg-10 mx-auto">
+          <div class="vstack gap-4">
+            <!-- Blog single START -->
+            <div class="card card-body">
+              <!--              <img class="rounded" src="assets/images/post/16by9/big/03.jpg" alt="">-->
+              <% if @ai_product.intro_pic %>
+                <img class="rounded" src=<%= asset_url("https://xcoze-1304952191.cos.ap-guangzhou.myqcloud.com/#{@ai_product.intro_pic}?imageMogr2/thumbnail/1300x732/crop/1300x732/gravity/center/format/webp/interlace/1/quality/100") %> alt="">
+              <% else %>
+                <img class="rounded" src=<%= asset_url("https://xcoze-1304952191.cos.ap-guangzhou.myqcloud.com/#{@ai_product.cover}?imageMogr2/thumbnail/1300x732/crop/1300x732/gravity/center/format/webp/interlace/1/quality/100") %> alt="">
+              <% end %>
+              <div class="mt-4">
+                <!-- Tag -->
+                <a  class="badge bg-danger bg-opacity-10 text-danger mb-2 fw-bold"><%= @ai_product.ai_product_sort.name %></a>
+                <!-- Title info -->
+                <h1 class="mb-2 h2"><%=@ai_product.name %></h1>
+                <ul class="nav nav-stack gap-3 align-items-center">
+                  <li class="nav-item">
+                    <div class="nav-link">
+                      by <a class="text-reset btn-link"><%= @ai_product.company %></a>
+                    </div>
+                  </li>
+                  <li class="nav-item"> <i class="bi bi-geo-alt pe-1"></i><%= @ai_product.country %></li>
+                </ul>
+                <!-- description -->
 
-<div>
-  <%= link_to "Edit this ai product", edit_ai_product_path(@ai_product) %> |
-  <%= link_to "Back to ai products", ai_products_path %>
+                <h4 class="mt-4"><a href="<%= @ai_product.uri %>" target="_blank">点击此处直达产品官网</a></h4>
 
-  <%= button_to "Destroy this ai product", @ai_product, method: :delete %>
-</div>
+                <!-- Blockquote START -->
+                <figure class="bg-light rounded p-3 p-sm-4 my-4">
+                  <blockquote class="mb-1" >
+                    <p><%= @ai_product.des %></p>
+                  </blockquote>
+                </figure>
+                <!-- Blockquote END -->
+                <p class="mb-0"> <%= html_escape(@ai_product.intro)%> </p>
+              </div>
+            </div>
+            <!-- Card END -->
+            <!-- Comments START -->
+            <div class="card">
+              <div class="card-header pb-0 border-0">
+                <h4>相似产品</h4>
+              </div>
+              <div class="card-body">
+
+                <div class="row g-4 ">
+                  <% @likeness.each do |p| %>
+                    <% if p.uuid != @ai_product.uuid %>
+                      <div class="col-sm-6 col-lg-4">
+                        <div class="card h-100">
+                          <!-- Card header END -->
+                          <img class="card-img-top" src="<%= p.cover + "?x-oss-process=style/ai-production-linkeness" %>" alt="Post">
+                          <!-- Card body START -->
+                          <div class="card-body">
+                            <!-- Info -->
+                            <a class="text-body" href="<%= ai_production_url(p) %>"><%= p.name %></a>
+                          </div>
+                          <!-- Card body END -->
+
+                        </div>
+                      </div>
+                    <% end %>
+                  <% end %>
+                </div>
+
+                <hr class="my-4">
+
+                <!--待实现评论-->
+                <div>
+
+
+                </div>
+                <!-- 待实现评论END -->
+              </div>
+            </div>
+            <!-- Blog single END -->
+          </div>
+        </div>
+        <!-- Main content END -->
+      </div> <!-- Row END -->
+    </div>
+    <!-- Container END -->
+
+  </main>
+
+
+</main>

@@ -7,5 +7,5 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   # root "articles#index"
-  root "ai_product_sorts#index"
+  root "ai_products#index"
 end
