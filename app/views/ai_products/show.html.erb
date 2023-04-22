@@ -1,7 +1,7 @@
 <%= content_for :title, @ai_product.name + '人工智能|AIGC|xcoze'%>
 <%= content_for :description, @ai_product.des %>
 
-  <main>
+  <main style="padding-top: 0rem">
     <!-- Container START -->
     <div class="container">
       <div class="row g-4">
@@ -12,9 +12,9 @@
             <div class="card card-body">
               <!--              <img class="rounded" src="assets/images/post/16by9/big/03.jpg" alt="">-->
               <% if @ai_product.intro_pic %>
-                <img class="rounded" src=<%= asset_url("https://xcoze-1304952191.cos.ap-guangzhou.myqcloud.com/#{@ai_product.intro_pic}?imageMogr2/thumbnail/1300x732/crop/1300x732/gravity/center/format/webp/interlace/1/quality/100") %> alt="">
+                <img class="rounded" src=<%= asset_url("https://xcoze-1304952191.cos.ap-guangzhou.myqcloud.com/#{@ai_product.intro_pic}?imageMogr2/thumbnail/1300x732/crop/1300x732/gravity/center/format/webp/interlace/1/quality/100") %> alt="<%= @ai_product.name %>">
               <% else %>
-                <img class="rounded" src=<%= asset_url("https://xcoze-1304952191.cos.ap-guangzhou.myqcloud.com/#{@ai_product.cover}?imageMogr2/thumbnail/1300x732/crop/1300x732/gravity/center/format/webp/interlace/1/quality/100") %> alt="">
+                <img class="rounded" src=<%= asset_url("https://xcoze-1304952191.cos.ap-guangzhou.myqcloud.com/#{@ai_product.cover}?imageMogr2/thumbnail/1300x732/crop/1300x732/gravity/center/format/webp/interlace/1/quality/100") %> alt="<%= @ai_product.name %>">
               <% end %>
               <div class="mt-4">
                 <!-- Tag -->
