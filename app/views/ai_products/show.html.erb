@@ -39,7 +39,9 @@
                   </blockquote>
                 </figure>
                 <!-- Blockquote END -->
-                <p class="mb-0"> <%= html_escape(@ai_product.intro.html_safe)%> </p>
+                <div class="mb-0 page-content col-lg-11">
+                  <%= html_escape(@ai_product.intro.html_safe)%>
+                </div>
               </div>
             </div>
             <!-- Card END -->
