@@ -31,6 +31,7 @@ gem "jbuilder"
 gem "rails_admin"
 gem 'jquery-rails'
 gem 'devise'
+gem 'ckeditor'
 
 # Use Redis adapter to run Action Cable in production
 # gem "redis", "~> 4.0"

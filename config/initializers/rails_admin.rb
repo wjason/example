@@ -39,4 +39,11 @@ RailsAdmin.config do |config|
     # history_index
     # history_show
   end
+
+  config.model 'AiProduct' do
+    edit do
+      configure :intro, :ck_editor
+    end
+  end
+
 end
