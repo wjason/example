@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   mount Ckeditor::Engine => '/ckeditor'
-  resources :ai_products
+  resources :ai_products,param: :uuid
   devise_for :admins
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   resources :ai_product_sorts

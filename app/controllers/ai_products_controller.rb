@@ -62,7 +62,7 @@ class AiProductsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_ai_product
-      @ai_product = AiProduct.find(params[:id])
+      @ai_product = AiProduct.find(params[:uuid])
     end
 
     # Only allow a list of trusted parameters through.
