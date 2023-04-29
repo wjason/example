@@ -1,0 +1,14 @@
+<p style="color: green"><%= notice %></p>
+
+<h1>Ai product tags</h1>
+
+<div id="ai_product_tags">
+  <% @ai_product_tags.each do |ai_product_tag| %>
+    <%= render ai_product_tag %>
+    <p>
+      <%= link_to "Show this ai product tag", ai_product_tag %>
+    </p>
+  <% end %>
+</div>
+
+<%= link_to "New ai product tag", new_ai_product_tag_path %>

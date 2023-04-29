@@ -1,0 +1,10 @@
+<p style="color: green"><%= notice %></p>
+
+<%= render @ai_product_tag %>
+
+<div>
+  <%= link_to "Edit this ai product tag", edit_ai_product_tag_path(@ai_product_tag) %> |
+  <%= link_to "Back to ai product tags", ai_product_tags_path %>
+
+  <%= button_to "Destroy this ai product tag", @ai_product_tag, method: :delete %>
+</div>

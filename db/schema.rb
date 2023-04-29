@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_04_22_083632) do
+ActiveRecord::Schema[7.0].define(version: 2023_04_29_145325) do
   create_table "admins", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -23,6 +23,13 @@ ActiveRecord::Schema[7.0].define(version: 2023_04_22_083632) do
     t.index ["reset_password_token"], name: "index_admins_on_reset_password_token", unique: true
   end
 
+  create_table "ai_product_and_tags", force: :cascade do |t|
+    t.integer "ai_product_id"
+    t.integer "ai_product_tag_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "ai_product_sorts", force: :cascade do |t|
     t.string "name"
     t.string "uuid"
@@ -30,6 +37,14 @@ ActiveRecord::Schema[7.0].define(version: 2023_04_22_083632) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["uuid"], name: "index_ai_product_sorts_on_uuid", unique: true
+  end
+
+  create_table "ai_product_tags", force: :cascade do |t|
+    t.string "name"
+    t.string "uuid"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "weight"
   end
 
   create_table "ai_products", force: :cascade do |t|

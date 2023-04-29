@@ -1,0 +1,2 @@
+module AiProductTagsHelper
+end
