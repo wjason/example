@@ -54,11 +54,20 @@
                   </div>
                   <!-- Intro body START -->
                   <div class="card-body position-relative pt-0">
+
                     <a href="<%= ai_product_url(p) %>" class="a_not_style">
                       <h5 class="mt-3">  <%= p.name %>  </h5>
                       <!-- Company info -->
                       <p class="mb-0 small"> <i class="bi bi-arrow-return-right pe-1"></i> <%= p.company %> </p>
                       <p class="small"> <i class="bi bi-geo-alt pe-1"></i> <%= p.country %> </p>
+                      <p><small><b>标签： </b></small>
+                        <% if p.ai_product_tags  %>
+                          <% p.ai_product_tags.order("weight DESC").limit(2).each do |tag|%>
+                            <small><%= tag.name %></small>
+                          <% end %>
+                        <% end %>
+
+                      </p>
                     </a>
                     <div class="d-flex mt-3 justify-content-between">
                       <!-- Detail button -->
