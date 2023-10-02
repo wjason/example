@@ -1,0 +1,14 @@
+<p style="color: green"><%= notice %></p>
+
+<h1>My contact cards</h1>
+
+<div id="my_contact_cards">
+  <% @my_contact_cards.each do |my_contact_card| %>
+    <%= render my_contact_card %>
+    <p>
+      <%= link_to "Show this my contact card", my_contact_card %>
+    </p>
+  <% end %>
+</div>
+
+<%= link_to "New my contact card", new_my_contact_card_path %>

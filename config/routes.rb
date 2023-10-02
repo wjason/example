@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :my_contact_cards
   resources :ai_product_tags
   mount Ckeditor::Engine => '/ckeditor'
   resources :ai_products,param: :uuid
