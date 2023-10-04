@@ -1,10 +1,1 @@
-<p style="color: green"><%= notice %></p>
-
-<%= render @my_contact_card %>
-
-<div>
-  <%= link_to "Edit this my contact card", edit_my_contact_card_path(@my_contact_card) %> |
-  <%= link_to "Back to my contact cards", my_contact_cards_path %>
-
-  <%= button_to "Destroy this my contact card", @my_contact_card, method: :delete %>
-</div>
+json.partial! "my_contact_cards/my_contact_card", my_contact_card: @my_contact_card
