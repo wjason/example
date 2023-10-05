@@ -2,7 +2,7 @@ class AccessToken < ApplicationRecord
   include HTTParty
 
   def self.get_or_refresh_token
-    token = AccessToken.find_or_initialize_by(id:1)
+    token = find_or_initialize_by(id:1)
 
     #如果token不存在或者过期，刷新token
     if token.expired? || token.token.blank?
