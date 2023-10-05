@@ -1,30 +1,35 @@
 <!-- app/views/your_controller/new.html.erb -->
-<%= form_with(model: @my_contact_card ) do |form| %>
-  <br>
-  <br>
-  <%= form.label :avatar %>
-  <%= form.file_field :avatar %>
-  <br>
-  <br>
-  <%= form.label :title %>
-  <%= form.text_field :title %>
-  <br>
-  <br>
-  <%= form.label :QRcode %>
-  <%= form.file_field :QRcode %>
-  <br>
-  <br>
-  <%= form.label :cdescription %>
-  <%= form.text_area :cdescription %>
-  <br>
-  <br>
-  <%= form.label :ctitle %>
-  <%= form.text_field :ctitle %>
-  <br>
-  <br>
-  <%= form.label :cpic %>
-  <%= form.file_field :cpic %>
-  <br>
-  <br>
-  <%= form.submit '提交' %>
-<% end %>
+
+<section class=" py-5">
+  <div class="container card card-body col-md-10 ">
+    <%= form_with(model: @my_contact_card ) do |form| %>
+      <br>
+      <br>
+      <%= form.label "微信小程序里面的头像" %>
+      <%= form.file_field :avatar %>
+      <br>
+      <br>
+      <%= form.label "微信小程序里面的引导语" %>
+      <%= form.text_field :title %>
+      <br>
+      <br>
+      <%= form.label "联系人QRCode" %>
+      <%= form.file_field :QRcode %>
+      <br>
+      <br>
+      <%= form.label "抖音卡片里面的大标题" %>
+      <%= form.text_field :ctitle %>
+      <br>
+      <br>
+      <%= form.label "抖音卡片里面的小标题" %>
+      <%= form.text_area :cdescription %>
+      <br>
+      <br>
+      <%= form.label "抖音卡片里面左边的图片" %>
+      <%= form.file_field :cpic %>
+      <br>
+      <br>
+      <%= form.submit '提交' %>
+    <% end %>
+  </div>
+</section>
