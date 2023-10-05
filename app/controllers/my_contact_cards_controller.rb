@@ -1,11 +1,18 @@
 class MyContactCardsController < ApplicationController
-  # require 'rest-client'
-  # before_action :set_my_contact_card, only: %i[ show ]
+  include TencentCloudHelper
+
 
   # GET /my_contact_cards or /my_contact_cards.json
-  # def index
-  #   @my_contact_cards = MyContactCard.all
-  # end
+  def index
+    #校验下是不是存在了
+    @my_contact_card = MyContactCard.find_by(code: params[:code])
+    if @my_contact_card
+      @link = "https://jump-mp-8g5kveme1e3718ff-1321346768.tcloudbaseapp.com/jump.html?code=" + @my_contact_card.code
+    else
+      @link = "系统错误，请联系管理员"
+    end
+
+  end
 
   # GET /my_contact_cards/1 or /my_contact_cards/1.json
   def show
@@ -39,57 +46,41 @@ class MyContactCardsController < ApplicationController
       # render json: { errcode: response_data['errcode'] }, status: :unprocessable_entity
       @my_contact_card.URLScheme = "errorCode#{response_data['errcode']}"
     end
-
-
-
   end
 
-  # GET /my_contact_cards/new
-  # def new
-  #   @my_contact_card = MyContactCard.new
-  # end
 
-  # GET /my_contact_cards/1/edit
-  # def edit
-  # end
 
-  # POST /my_contact_cards or /my_contact_cards.json
-  # def create
-  #   @my_contact_card = MyContactCard.new(my_contact_card_params)
-  #
-  #   respond_to do |format|
-  #     if @my_contact_card.save
-  #       format.html { redirect_to my_contact_card_url(@my_contact_card), notice: "My contact card was successfully created." }
-  #       format.json { render :show, status: :created, location: @my_contact_card }
-  #     else
-  #       format.html { render :new, status: :unprocessable_entity }
-  #       format.json { render json: @my_contact_card.errors, status: :unprocessable_entity }
-  #     end
-  #   end
-  # end
+  def new
+    @my_contact_card = MyContactCard.new
+  end
+  def create
+    @my_contact_card = MyContactCard.new(my_contact_card_params)
+    if @my_contact_card.save
+      # 上传图片到腾讯云 COS
+      if params[:my_contact_card][:avatar]
+        @my_contact_card.avatar = upload_image_to_cos(params[:my_contact_card][:avatar])
+      end
 
-  # PATCH/PUT /my_contact_cards/1 or /my_contact_cards/1.json
-  # def update
-  #   respond_to do |format|
-  #     if @my_contact_card.update(my_contact_card_params)
-  #       format.html { redirect_to my_contact_card_url(@my_contact_card), notice: "My contact card was successfully updated." }
-  #       format.json { render :show, status: :ok, location: @my_contact_card }
-  #     else
-  #       format.html { render :edit, status: :unprocessable_entity }
-  #       format.json { render json: @my_contact_card.errors, status: :unprocessable_entity }
-  #     end
-  #   end
-  # end
+      if params[:my_contact_card][:QRcode]
+        @my_contact_card.QRcode = upload_image_to_cos(params[:my_contact_card][:QRcode])
+      end
 
-  # DELETE /my_contact_cards/1 or /my_contact_cards/1.json
-  # def destroy
-  #   @my_contact_card.destroy
-  #
-  #   respond_to do |format|
-  #     format.html { redirect_to my_contact_cards_url, notice: "My contact card was successfully destroyed." }
-  #     format.json { head :no_content }
-  #   end
-  # end
+      if params[:my_contact_card][:cpic]
+        @my_contact_card.cpic = upload_image_to_cos(params[:my_contact_card][:cpic])
+      end
+
+      # 保存模型
+      if @my_contact_card.save
+        redirect_to my_contact_cards_path(code: @my_contact_card.code)
+      else
+        render 'new'
+      end
+    else
+      render 'new'
+    end
+  end
+
+
 
   private
     # Use callbacks to share common setup or constraints between actions.

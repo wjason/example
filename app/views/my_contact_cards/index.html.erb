@@ -1,14 +1,29 @@
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        var linkText = document.getElementById("link").textContent;
+        var copyButton = document.getElementById("copyButton");
+
+        copyButton.addEventListener("click", function () {
+            var textarea = document.createElement("textarea");
+            textarea.value = linkText;
+            document.body.appendChild(textarea);
+            textarea.select();
+            document.execCommand('copy');
+            document.body.removeChild(textarea);
+
+            alert("链接已复制到剪贴板！");
+        });
+    });
+</script>
 <p style="color: green"><%= notice %></p>
 
 <h1>My contact cards</h1>
 
 <div id="my_contact_cards">
-  <% @my_contact_cards.each do |my_contact_card| %>
-    <%= render my_contact_card %>
-    <p>
-      <%= link_to "Show this my contact card", my_contact_card %>
-    </p>
-  <% end %>
+  <p>
+    <strong>Link:</strong>
+  <p id="link"><%= @link %></p>
+  <button id="copyButton">复制链接</button>
 </div>
 
-<%= link_to "New my contact card", new_my_contact_card_path %>
+
