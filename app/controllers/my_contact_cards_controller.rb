@@ -18,7 +18,7 @@ class MyContactCardsController < ApplicationController
   def show
     @my_contact_card = MyContactCard.find_by(code: params[:id])
     @my_contact_card.URLScheme = ""
-    access_token = AccessToken.get_or_refresh_token
+    access_token = AccessToken.get_or_refresh_token(false )
     # 构建请求参数
     request_payload = {
       jump_wxa: {
@@ -41,6 +41,10 @@ class MyContactCardsController < ApplicationController
       # 请求成功，返回openlink参数
       # render json: { openlink: response_data['openlink'] }, status: :ok
       @my_contact_card.URLScheme = response_data['openlink']
+    elsif response_data['errcode'] == 40001
+      AccessToken.get_or_refresh_token(true )
+      p "触发强制刷新ACCESS_TOKEN"
+      redirect_to my_contact_card_path(id: params[:id], format: :json)
     else
       # 请求失败，返回errcode参数
       # render json: { errcode: response_data['errcode'] }, status: :unprocessable_entity

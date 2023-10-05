@@ -1,11 +1,14 @@
 class AccessToken < ApplicationRecord
   include HTTParty
 
-  def self.get_or_refresh_token
+  def self.get_or_refresh_token(forced)
     token = find_or_initialize_by(id:1)
 
     #如果token不存在或者过期，刷新token
-    if token.expired? || token.token.blank?
+    if token.expired? || token.token.blank? || forced
+      if forced
+        p "接收到强制刷新指令"
+      end
       response = fetch_new_token
       if response['access_token'].present?
         token.token = response['access_token']
