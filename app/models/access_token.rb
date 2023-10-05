@@ -8,7 +8,6 @@ class AccessToken < ApplicationRecord
     if token.expired? || token.token.blank? || forced
       if forced
         p "接收到强制刷新指令"
-        logger.warn("类方法接收到强制刷新指令")
       end
       response = fetch_new_token
       if response['access_token'].present?
