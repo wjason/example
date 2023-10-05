@@ -44,6 +44,7 @@ class MyContactCardsController < ApplicationController
     elsif response_data['errcode'] == 40001
       AccessToken.get_or_refresh_token(true )
       p "触发强制刷新ACCESS_TOKEN"
+      logger.warn("触发强制刷新ACCESS_TOKEN")
       redirect_to my_contact_card_path(id: params[:id], format: :json)
     else
       # 请求失败，返回errcode参数
