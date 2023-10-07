@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'dy/show'
+  resources :dy,only: :show
   resources :my_contact_cards
   resources :ai_product_tags
   mount Ckeditor::Engine => '/ckeditor'

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title><%= yield :title %></title>
+  <meta name="description" content="<%= yield :description %>">
+  <meta name="keywords" content="<%= yield :keywords %>">
+  <meta name="description" content="<%= yield :description %>">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <link rel="shortcut icon" type="text/css" href="<%= yield :sicon %>">
+  <link rel="apple-touch-icon" type="text/css" href="<%= yield :appleicon %>">
+  <%= csrf_meta_tags %>
+  <%= csp_meta_tag %>
+
+  <script charset="UTF-8" id="LA_COLLECT" src="//sdk.51.la/js-sdk-pro.min.js"></script>
+  <script>LA.init({id:"K2e8vbElQptG1dcX",ck:"K2e8vbElQptG1dcX",autoTrack:true})</script>
+</head>
+
+<body>
+<p class="notice"><%= notice %></p>
+<p class="alert"><%= alert %></p>
+<style>
+    body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 90vh;
+        margin: 0;
+    }
+
+    .center {
+        text-align: center;
+    }
+
+    .center img {
+        max-width: 70%;
+        max-height: 100%;
+        vertical-align: middle;
+    }
+</style>
+
+<%= yield %>
+
+
+
+
+</body>
+</html>

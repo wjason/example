@@ -1,0 +1,43 @@
+<%= content_for :title, @card.ctitle%>
+<%= content_for :description, @card.cdescription %>
+<%= content_for :sicon, @card.cpic %>
+<%= content_for :appleicon, @card.cpic %>
+<p style="color: green"><%= notice %></p>
+
+<div class="center">
+  <div>
+    <img class="light-mode-item navbar-brand-item" src="<%= asset_path('dy2.png') %>" alt="logo">
+  </div>
+
+</div>
+<!--<div class="center">-->
+
+<!--  <p>User Agent: <span id="userAgent"></span></p>-->
+<!--</div>-->
+
+<script type="text/javascript" charset="utf-8">
+  window.onload = function (){
+      setTimeout(function(){
+          window.location.href = "<%= @cardsche %>"
+      },300)
+  }
+</script>
+<style>
+    body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 90vh;
+        margin: 0;
+    }
+
+    .center {
+        text-align: center;
+    }
+
+    .center img {
+        max-width: 70%;
+        max-height: 100%;
+        vertical-align: middle;
+    }
+</style>
