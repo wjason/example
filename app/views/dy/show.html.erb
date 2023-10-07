@@ -8,7 +8,7 @@
   <div>
     <img class="light-mode-item navbar-brand-item" src="<%= asset_path('dy2.png') %>" alt="logo">
   </div>
-  <iframe id="myIframe" style="display: none;"></iframe>
+  <butttom>打开</butttom>
 
 </div>
 <!--<div class="center">-->
@@ -19,19 +19,6 @@
 <script type="text/javascript" charset="utf-8">
 
   var ticket = "<%= @ticket %>"
-  window.onload = function() {
-
-      setTimeout(function () {
-          // 获取 iframe 元素
-          var iframe = document.getElementById("myIframe");
-
-          // 设置 iframe 的 src 属性
-          iframe.src = "https://f6giuyi.scove.cn/crsBGF";
-
-          // 让 iframe 可见
-          iframe.style.display = "block"; // 或者其他你想要的显示方式
-      }, 500);
-  }
 
 
 
