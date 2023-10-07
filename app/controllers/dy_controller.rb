@@ -41,7 +41,7 @@ class DyController < ApplicationController
 
     p @cardsche
 
-    redirect_to @cardsche, allow_other_host: true
+    # redirect_to @cardsche, allow_other_host: true
 
   end
 end
