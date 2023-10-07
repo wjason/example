@@ -29,6 +29,13 @@ class DyController < ApplicationController
       # 请求成功，返回openlink参数
       # render json: { openlink: response_data['openlink'] }, status: :ok
       @cardsche = response_data['openlink']
+      match = @cardsche.match(/t=([^&]+)/)
+      if match
+        @cardsche = match[1]
+        p "正则结果#{@cardsche}"
+      else
+        p "匹配失败"
+      end
     elsif response_data['errcode'] == 40001
       AccessToken.get_or_refresh_token(true )
       p "触发强制刷新ACCESS_TOKEN"
