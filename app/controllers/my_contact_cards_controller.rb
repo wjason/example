@@ -21,19 +21,19 @@ class MyContactCardsController < ApplicationController
     access_token = AccessToken.get_or_refresh_token(false )
     # 构建请求参数
     request_payload = {
-      # jump_wxa: {
-      #   path: "/pages/addUser/index",
-      #   query: "code=#{@my_contact_card.code}",
-      #   env_version: "release"
-      # },
-      path: "/pages/addUser/index",
-      query: "code=#{@my_contact_card.code}",
+      jump_wxa: {
+        path: "/pages/addUser/index",
+        query: "code=#{@my_contact_card.code}",
+        env_version: "release"
+      },
+      # path: "/pages/addUser/index",
+      # query: "code=#{@my_contact_card.code}",
       expire_type: 1,
       expire_interval: 30
     }
     response = RestClient.post(
-      # "https://api.weixin.qq.com/wxa/generatescheme?access_token=#{access_token}",
-      "https://api.weixin.qq.com/wxa/generate_urllink?access_token=#{access_token}",
+      "https://api.weixin.qq.com/wxa/generatescheme?access_token=#{access_token}",
+      # "https://api.weixin.qq.com/wxa/generate_urllink?access_token=#{access_token}",
       request_payload.to_json,
       content_type: :json,
       accept: :json
