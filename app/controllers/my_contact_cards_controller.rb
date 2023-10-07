@@ -7,7 +7,7 @@ class MyContactCardsController < ApplicationController
     #校验下是不是存在了
     @my_contact_card = MyContactCard.find_by(code: params[:code])
     if @my_contact_card
-      @link = "https://www.xcoze.com/" + @my_contact_card.code
+      @link = "https://xcoze.com/dy/" + @my_contact_card.code
     else
       @link = "系统错误，请联系管理员"
     end
