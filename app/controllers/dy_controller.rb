@@ -3,7 +3,7 @@ class DyController < ApplicationController
   def show
     p params[:id]
     @card = MyContactCard.find_by(code: params[:id])
-    @cardsche = ""
+    @ticket = ""
     access_token = AccessToken.get_or_refresh_token(false )
     # 构建请求参数
     request_payload = {
@@ -28,11 +28,11 @@ class DyController < ApplicationController
     if response_data['errcode'] == 0
       # 请求成功，返回openlink参数
       # render json: { openlink: response_data['openlink'] }, status: :ok
-      @cardsche = response_data['openlink']
-      match = @cardsche.match(/t=([^&]+)/)
+      @ticket = response_data['openlink']
+      match = @ticket.match(/t=([^&]+)/)
       if match
-        @cardsche = match[1]
-        p "正则结果#{@cardsche}"
+        @ticket = match[1]
+        p "正则结果#{@ticket}"
       else
         p "匹配失败"
       end
@@ -43,10 +43,10 @@ class DyController < ApplicationController
     else
       # 请求失败，返回errcode参数
       # render json: { errcode: response_data['errcode'] }, status: :unprocessable_entity
-      @cardsche = "errorCode#{response_data['errcode']}"
+      @ticket = "errorCode#{response_data['errcode']}"
     end
 
-    p @cardsche
+    p @ticket
 
     # redirect_to @cardsche, allow_other_host: true
 
