@@ -28,7 +28,7 @@ Header START -->
          <a class="navbar-brand" href="<%= root_path %>">
          <% if request.host == 'xcoze.com' %>
            <p class="text mb-0">XCOZE</p>
-         <% elsif request.host == yatgoods.com%>
+         <% elsif request.host == 'yatgoods.com' %>
            <p class="text mb-0">YATGOODS </p>
          <% end %>
 <!--           <img class="light-mode-item navbar-brand-item" src="<%#= asset_path('xcoze-logo.png') %>" alt="logo">-->
@@ -117,7 +117,7 @@ Header START -->
              <li class="nav-item">
                <% if request.host == 'xcoze.com' %>
                 <a class="nav-link" href="https://beian.miit.gov.cn/" target="_blank">粤ICP备2021022481号-1</a>
-               <% elsif request.host == yatgoods.com%>
+               <% elsif request.host == 'yatgoods.com' %>
                  <a class="nav-link" href="https://beian.miit.gov.cn/" target="_blank">粤ICP备2021022481号-2</a>
                <% end %>
 
@@ -129,7 +129,7 @@ Header START -->
            <!-- Copyright START -->
            <% if request.host == 'xcoze.com' %>
              <p class="text-end mb-0">©2023 <a class="text-body" href="#">XCOZE </a>All rights reserved.</p>
-           <% elsif request.host == yatgoods.com%>
+           <% elsif request.host == 'yatgoods.com' %>
              <p class="text-end mb-0">©2023 <a class="text-body" href="#">YATGOODS </a>All rights reserved.</p>
            <% end %>
            <!-- Copyright END -->
